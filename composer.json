@@ -1,0 +1,26 @@
+{
+    "name": "jbizzay/php-dot",
+    "description": "Structured array helper with dot notation",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jason Kuchynka",
+            "email": "jason.kuchynka@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+      "psr-4": {
+        "Jbizzay\\": "src"
+      }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Jbizzay\\Tests\\": "tests"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.2"
+    }
+}
