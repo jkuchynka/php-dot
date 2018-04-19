@@ -203,4 +203,30 @@ class DotTest extends \PHPUnit\Framework\TestCase
         $this->assertNull($this->dot->unset('z.z.z.z.z')->get('z.z.z.z.z'));
     }
 
+    public function testGetMixedObjectArrayUsage()
+    {
+        $obj = new \stdClass;
+        $obj->results = [
+            'baz' => new \stdClass
+        ];
+        $obj->results['baz']->somevars = [
+            'foo' => new \stdClass
+        ];
+        $obj->results['baz']->somevars['foo']->test = 123;
+        $dot = new Dot($obj);
+        $this->assertEquals(123, $dot->get('results.baz.somevars.foo.test'));
+        $this->assertTrue(is_object($dot->get('results.baz.somevars.foo')));
+    }
+
+    public function testGetNumericIndexes()
+    {
+        $data = [
+            'vars' => [
+                'one', 'two'
+            ]
+        ];
+        $dot = new Dot($data);
+        $this->assertEquals('one', $dot->get('vars.0'));
+    }
+
 }

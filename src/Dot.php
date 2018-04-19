@@ -1,5 +1,4 @@
 <?php
-
 namespace Jbizzay;
 
 /**
@@ -20,10 +19,10 @@ class Dot
     protected $preserveNumericKeys = false;
 
     /**
-     *
+     * Create a new Dot
      * @param array|null $data
      */
-    public function __construct(array $data = null)
+    public function __construct($data = null)
     {
         $this->data = $data ?: array();
     }
@@ -48,7 +47,7 @@ class Dot
     }
 
     /**
-     * Get a value, returns null if not setf
+     * Get a value, returns null if not set
      *
      * @param string $key
      * @return mixed
@@ -60,7 +59,12 @@ class Dot
         }
         $target = $this->data;
         $keys = explode('.', $key);
-        while ($key = array_shift($keys)) {
+        while (count($keys)) {
+            $key = array_shift($keys);
+            // Check if current level is object
+            if (isset($target->$key)) {
+                $target = (array) $target;
+            }
             if ( ! isset($target[$key])) {
                 break;
             }
