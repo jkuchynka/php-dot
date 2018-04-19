@@ -34,7 +34,7 @@ class Dot
      * @param mixed $dataOrCallable Any data value or callable
      * @return mixed Data
      */
-    public function define(string $key, $dataOrCallable = array())
+    public function define($key, $dataOrCallable = array())
     {
         if ( ! $this->has($key)) {
             if (is_callable($dataOrCallable)) {
@@ -52,7 +52,7 @@ class Dot
      * @param string $key
      * @return mixed
      */
-    public function get(string $key = null)
+    public function get($key = null)
     {
         if ( ! $key) {
             return $this->data;
@@ -82,7 +82,7 @@ class Dot
      * @param string $key
      * @return boolean
      */
-    public function has(string $key)
+    public function has($key)
     {
         $target = $this->data;
         $keys = explode('.', $key);
@@ -139,7 +139,7 @@ class Dot
      * @param mixed $dataOrCallable
      * @param $this
      */
-    public function set(string $key, $dataOrCallable = array())
+    public function set($key, $dataOrCallable = array())
     {
         $target = &$this->data;
         $keys = explode('.', $key);
@@ -166,7 +166,7 @@ class Dot
      * @param string $key
      * @return void
      */
-    public function unset(string $key)
+    public function _unset($key)
     {
         $target = &$this->data;
         $keys = explode('.', $key);
