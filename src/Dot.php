@@ -47,12 +47,12 @@ class Dot
     }
 
     /**
-     * Get a value, returns null if not set
+     * Get a value, returns default if not set
      *
      * @param string $key
      * @return mixed
      */
-    public function get($key = null)
+    public function get($key = null, $default = null)
     {
         if ( ! $key) {
             return $this->data;
@@ -73,7 +73,7 @@ class Dot
             }
             $target = &$target[$key];
         }
-        return null;
+        return $default;
     }
 
     /**
