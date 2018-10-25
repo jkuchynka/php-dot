@@ -87,6 +87,9 @@ class Dot
         $target = $this->data;
         $keys = explode('.', $key);
         while ($key = array_shift($keys)) {
+            if (isset($target->$key)) {
+                $target = (array) $target;
+            }
             if (empty($keys)) {
                 if ( ! isset($target[$key])) {
                     return false;
