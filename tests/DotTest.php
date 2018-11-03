@@ -93,6 +93,16 @@ class DotTest extends \PHPUnit\Framework\TestCase
         $this->assertFalse($this->dot->has('z.z.z.z.z.z'));
     }
 
+    public function testHasOnObject()
+    {
+        $class = new \stdClass;
+        $class->one = new \stdClass;
+        $class->one->two = 'three';
+        $dot = new Dot($class);
+        $this->assertFalse($dot->has('one.three'));
+        $this->assertTrue($dot->has('one.two'));
+    }
+
     public function testMergeArrayReplacesKey()
     {
         $this->assertEquals(['e' => 321, 'f' => 123], $this->dot->merge('c.d.e', ['e' => 321, 'f' => 123])->get('c.d.e'));
