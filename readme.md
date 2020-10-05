@@ -1,5 +1,7 @@
 # PHP Dot Array
 
+This repo is unmaintained. Check out this if you need something simliar: https://github.com/adbario/php-dot-notation
+
 Helps manage arrays in PHP with dot notation. Useful for configs, meta data, or just working with large associative arrays. 
 
 Often, working with large arrays is cumbersome and prone to errors. Having to drill down into multiple levels of an array, checking isset all the way, is not fun.
